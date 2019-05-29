@@ -34,30 +34,34 @@ class _Dashboard extends State<Dashboard> {
                   fit: BoxFit.cover)),
         ),
       ),
-      Padding(
+      Container(
+        decoration: BoxDecoration(
+          color: const Color(0xFF808080).withOpacity(0.15),
+        ),
+      child : SizedBox.expand(
+       child : Padding(
           padding: EdgeInsets.only(left: 25.0, top: 60),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Text Title',
+                'Lalit Pawar',
                 style: TextStyle(
                     fontSize: 45.0,
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Rubik-Medium',
                     color: Colors.purpleAccent),
               ),
               Text(
-                'Text subtitle',
+                'Mobile Developer',
                 style: TextStyle(
-                    fontFamily: 'Montserrat',
+                    fontFamily: 'Rubik-Regular',
                     fontSize: 20.0,
                     color: Colors.purpleAccent[index]),
               ),
             ],
           )),
-      childOne(context)
-    ]);
+    ))]);
   }
 
   Widget childOne(BuildContext context) {
