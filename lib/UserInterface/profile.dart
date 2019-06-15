@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(vsync: this, length: 2);
+    tabController = TabController(vsync: this, length: 3);
   }
 
   @override
@@ -59,9 +60,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   width: 100.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50.0),
+                      border: Border.all(color: Colors.grey[500], width: 1.0),
                       image: DecorationImage(
-                          image: NetworkImage(
-                              'http://rx.iscdn.net/2015/06/101041_carroczen-highpointmx201_164cf.jpg?auto=format&q=90&w=1300&h=685&fit=crop&crop=faces'),
+                          image: AssetImage('images/lalit___.jpg'),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -71,9 +72,15 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
         Padding(
             padding: EdgeInsets.only(top: 10.0),
             child: TabBar(
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicator: new BubbleTabIndicator(
+                indicatorHeight: 35.0,
+                indicatorColor: Colors.purpleAccent,
+                tabBarIndicatorSize: TabBarIndicatorSize.tab,
+              ),
               controller: tabController,
               indicatorColor: Colors.transparent,
-              labelColor: Colors.purpleAccent,
+              labelColor: Colors.white,
               isScrollable: true,
               unselectedLabelColor: Color(0xFFB6BDC7),
               tabs: <Widget>[
@@ -95,6 +102,15 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                     ),
                   ),
                 ),
+                Tab(
+                  child: Text(
+                    'Projects',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: 20.0,
+                    ),
+                  ),
+                )
               ],
             )),
         SizedBox(height: 10.0),
@@ -109,6 +125,11 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   style: TextStyle(fontSize: 25.0),
                 )),
                 Center(
+                  child: Text(
+                    'Comming soon',
+                    style: TextStyle(fontSize: 25.0),
+                  ),
+                ),Center(
                   child: Text(
                     'Comming soon',
                     style: TextStyle(fontSize: 25.0),
