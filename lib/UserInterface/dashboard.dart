@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lp_portfolio/UserInterface/dashboard_bloc.dart';
 import 'package:lp_portfolio/UserInterface/profile.dart';
 
 class Dashboard extends StatefulWidget {
@@ -14,6 +15,7 @@ class Dashboard extends StatefulWidget {
 class _Dashboard extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
+    dashboardBloc.fetchProfileInfo();
     // TODO: implement build
     return new Scaffold(
       backgroundColor: Colors.white,
