@@ -24,8 +24,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   bubble_tab_indicator: "^0.1.4"
-  rxdart: ^0.18.0
+  rxdart: ^0.20.0
   http: any
+  dio: ^1.0.14
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,6 @@ fonts:
         - asset: assets/fonts/Rubik-Regular.ttf
 
 assets:
-    - assets/images/lalit___.jpg
+    - assets/images/
 
   

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lp_portfolio/UserInterface/dashboard_bloc.dart';
-import 'package:lp_portfolio/UserInterface/profile.dart';
+import 'package:lp_portfolio/Model/profile_data.dart';
+import 'package:lp_portfolio/user_interface/dashboard_bloc.dart';
+import 'package:lp_portfolio/user_interface/profile.dart';
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
@@ -13,16 +14,57 @@ class Dashboard extends StatefulWidget {
 }
 
 class _Dashboard extends State<Dashboard> {
+
+ @override
+  void initState() {
+    super.initState();
+    dashboardBloc.getUser();
+  }
+
   @override
   Widget build(BuildContext context) {
-    dashboardBloc.fetchProfileInfo();
     // TODO: implement build
-    return new Scaffold(
-      backgroundColor: Colors.white,
-      body: mainLayout(context),
+    return StreamBuilder<ProfileData>(
+      stream: dashboardBloc.subject.stream,
+      builder: (context, AsyncSnapshot<ProfileData> snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data.error != null && snapshot.data.error.length > 0) {
+            return _buildErrorWidget(snapshot.data.error);
+          }
+          return mainLayout(context);
+        } else if (snapshot.hasError) {
+          return _buildErrorWidget(snapshot.error);
+        } else {
+          return _buildLoadingWidget();
+        }
+      },
     );
   }
 
+Widget _buildLoadingWidget() {
+    return Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Loading data from API...",
+            style: Theme.of(context).textTheme.subtitle),
+        Padding(
+          padding: EdgeInsets.only(top: 5),
+        ),
+        CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),)
+      ],
+    ));
+  }
+
+  Widget _buildErrorWidget(String error) {
+    return Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Error occured: $error", style: Theme.of(context).textTheme.subtitle),
+      ],
+    ));
+  }
   void onClickContact() {
       setState(() {
         print('profile');
@@ -41,7 +83,7 @@ class _Dashboard extends State<Dashboard> {
         child: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/lalit___.jpg'),
+                  image: AssetImage('assets/images/lalit_bg.jpg'),
                   fit: BoxFit.cover)),
         ),
       ),

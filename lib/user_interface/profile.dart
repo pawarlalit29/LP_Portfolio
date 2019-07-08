@@ -13,7 +13,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(vsync: this, length: 3);
+    tabController = TabController(vsync: this, length: 4);
   }
 
   @override
@@ -46,6 +46,19 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
     );
   }
 
+  Widget aboutUs(){
+    return ListView(
+      children: <Widget>[
+        Container(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Text(),
+          ),
+        )
+      ],
+    )
+  }
+
   Widget mainLayout() {
     return ListView(
       children: <Widget>[
@@ -62,7 +75,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(50.0),
                       border: Border.all(color: Colors.grey[500], width: 1.0),
                       image: DecorationImage(
-                          image: AssetImage('images/lalit___.jpg'),
+                          image: AssetImage('assets/images/lalit___.jpg'),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -74,7 +87,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
             child: TabBar(
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: new BubbleTabIndicator(
-                indicatorHeight: 35.0,
+                indicatorHeight: 45.0,
                 indicatorColor: Colors.purpleAccent,
                 tabBarIndicatorSize: TabBarIndicatorSize.tab,
               ),
@@ -86,7 +99,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               tabs: <Widget>[
                 Tab(
                   child: Text(
-                    'Info',
+                    'About me',
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 20.0,
@@ -95,7 +108,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 ),
                 Tab(
                   child: Text(
-                    'Education',
+                    'Work with',
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 20.0,
@@ -105,6 +118,14 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                 Tab(
                   child: Text(
                     'Projects',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),Tab(
+                  child: Text(
+                    'Contact us',
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 20.0,
@@ -125,6 +146,11 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   style: TextStyle(fontSize: 25.0),
                 )),
                 Center(
+                  child: Text(
+                    'Comming soon',
+                    style: TextStyle(fontSize: 25.0),
+                  ),
+                ),Center(
                   child: Text(
                     'Comming soon',
                     style: TextStyle(fontSize: 25.0),

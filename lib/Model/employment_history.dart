@@ -1,26 +1,33 @@
 
-class Employment_history {
-
-  String company_name;
+class EmploymentHistory {
+  String companyName;
   String designation;
   bool isCurrentEmployer;
-  String start_date;
-  String end_date;
+  String startDate;
+  String endDate;
 
-	Employment_history.fromJsonMap(Map<String, dynamic> map): 
-		company_name = map["company_name"],
-		designation = map["designation"],
-		isCurrentEmployer = map["isCurrentEmployer"],
-		start_date = map["start_date"],
-		end_date = map["end_date"];
+  EmploymentHistory(
+      {this.companyName,
+      this.designation,
+      this.isCurrentEmployer,
+      this.startDate,
+      this.endDate});
 
-	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['company_name'] = company_name;
-		data['designation'] = designation;
-		data['isCurrentEmployer'] = isCurrentEmployer;
-		data['start_date'] = start_date;
-		data['end_date'] = end_date;
-		return data;
-	}
+  EmploymentHistory.fromJson(Map<String, dynamic> json) {
+    companyName = json['company_name'];
+    designation = json['designation'];
+    isCurrentEmployer = json['isCurrentEmployer'];
+    startDate = json['start_date'];
+    endDate = json['end_date'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['company_name'] = this.companyName;
+    data['designation'] = this.designation;
+    data['isCurrentEmployer'] = this.isCurrentEmployer;
+    data['start_date'] = this.startDate;
+    data['end_date'] = this.endDate;
+    return data;
+  }
 }
