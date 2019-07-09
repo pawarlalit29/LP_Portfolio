@@ -52,11 +52,11 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
         Container(
           child: Padding(
             padding: EdgeInsets.all(20),
-            child: Text(),
+            child: Text("About us"),
           ),
         )
       ],
-    )
+    );
   }
 
   Widget mainLayout() {
@@ -86,14 +86,14 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
             padding: EdgeInsets.only(top: 10.0),
             child: TabBar(
               indicatorSize: TabBarIndicatorSize.tab,
-              indicator: new BubbleTabIndicator(
-                indicatorHeight: 45.0,
-                indicatorColor: Colors.purpleAccent,
-                tabBarIndicatorSize: TabBarIndicatorSize.tab,
-              ),
+              // indicator: new BubbleTabIndicator(
+              //   indicatorHeight: 45.0,
+              //   indicatorColor: Colors.purpleAccent,
+              //   tabBarIndicatorSize: TabBarIndicatorSize.tab,
+              // ),
               controller: tabController,
-              indicatorColor: Colors.transparent,
-              labelColor: Colors.white,
+              indicatorColor: Colors.purpleAccent,
+              labelColor: Colors.purpleAccent,
               isScrollable: true,
               unselectedLabelColor: Color(0xFFB6BDC7),
               tabs: <Widget>[

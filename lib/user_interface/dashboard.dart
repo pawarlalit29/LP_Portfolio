@@ -14,8 +14,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _Dashboard extends State<Dashboard> {
-
- @override
+  @override
   void initState() {
     super.initState();
     dashboardBloc.getUser();
@@ -31,7 +30,10 @@ class _Dashboard extends State<Dashboard> {
           if (snapshot.data.error != null && snapshot.data.error.length > 0) {
             return _buildErrorWidget(snapshot.data.error);
           }
-          return mainLayout(context);
+          return new Scaffold(
+            backgroundColor: Colors.white,
+            body: mainLayout(context),
+          );
         } else if (snapshot.hasError) {
           return _buildErrorWidget(snapshot.error);
         } else {
@@ -41,7 +43,7 @@ class _Dashboard extends State<Dashboard> {
     );
   }
 
-Widget _buildLoadingWidget() {
+  Widget _buildLoadingWidget() {
     return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +53,9 @@ Widget _buildLoadingWidget() {
         Padding(
           padding: EdgeInsets.only(top: 5),
         ),
-        CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),)
+        CircularProgressIndicator(
+          valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+        )
       ],
     ));
   }
@@ -61,19 +65,21 @@ Widget _buildLoadingWidget() {
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Error occured: $error", style: Theme.of(context).textTheme.subtitle),
+        Text("Error occured: $error",
+            style: Theme.of(context).textTheme.subtitle),
       ],
     ));
   }
+
   void onClickContact() {
-      setState(() {
-        print('profile');
-        Navigator.push(
-          context,
-          new MaterialPageRoute(builder: (ctxt) => new Profile()),
-        );
-      });
-    }
+    setState(() {
+      print('profile');
+      Navigator.push(
+        context,
+        new MaterialPageRoute(builder: (ctxt) => new Profile()),
+      );
+    });
+  }
 
   Widget mainLayout(BuildContext buildContext) {
     var index = 200;
@@ -117,32 +123,33 @@ Widget _buildLoadingWidget() {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 40.0),
                 child: Center(
-                  child : InkWell(
-                      onTap: (){onClickContact();},
-                      child:  Container(
+                  child: InkWell(
+                    onTap: () {
+                      onClickContact();
+                    },
+                    child: Container(
                         width: 200.0,
                         height: 50.0,
-                        decoration:  BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.purpleAccent,
                           border: Border.all(
                             color: Colors.white,
                             width: 1.0,
                           ),
-                          borderRadius:  BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(30.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8.0,horizontal: 4.0),
-                          child :Center(
-                          child:  Text(
-                            'Portfolio',
-                            style:  TextStyle(
-                                fontSize: 18.0, color: Colors.white),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 4.0),
+                          child: Center(
+                            child: Text(
+                              'Portfolio',
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.white),
+                            ),
                           ),
-                        ),)
-                      ),
-                    ),
-                    
-                  
+                        )),
+                  ),
                 ),
               )
             ],
@@ -151,8 +158,6 @@ Widget _buildLoadingWidget() {
   }
 
   Widget childOne(BuildContext context) {
-    
-
     return Align(
         alignment: Alignment.bottomCenter,
         child: Container(

@@ -1,8 +1,4 @@
-import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:lp_portfolio/Model/profile_data.dart';
 
 const baseUrl = "https://demo8661550.mockable.io/";
@@ -12,7 +8,7 @@ class WebApiProvider{
 
 Dio _dio;
 
-  UserApiProvider() {
+  WebApiProvider() {
     Options options = Options(receiveTimeout: 5000, connectTimeout: 5000);
     _dio = Dio(options);
     _setupLoggingInterceptor();

@@ -1,13 +1,11 @@
 
+import 'package:lp_portfolio/Model/profile_data.dart';
 import 'package:lp_portfolio/repository/repository.dart';
-import 'package:lp_portfolio/model/profile_data.dart';
 import 'package:rxdart/rxdart.dart';
 
 class DashboardBloc{
   final _repository = new Repository();
-  final _profileFetcher = PublishSubject<ProfileData>();
-
-final BehaviorSubject<ProfileData> _subject =
+ final BehaviorSubject<ProfileData> _subject =
       BehaviorSubject<ProfileData>();
 
   getUser() async {

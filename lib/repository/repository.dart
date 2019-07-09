@@ -1,5 +1,4 @@
-import 'dart:async';
-import 'package:lp_portfolio/Model/ProfileData.dart';
+import 'package:lp_portfolio/Model/profile_data.dart';
 import 'package:lp_portfolio/repository/web_api.dart';
 
 
