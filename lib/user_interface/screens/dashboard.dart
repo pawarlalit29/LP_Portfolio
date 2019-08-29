@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lp_portfolio/Model/profile_data.dart';
-import 'package:lp_portfolio/user_interface/dashboard_bloc.dart';
-import 'package:lp_portfolio/user_interface/profile.dart';
+import 'package:lp_portfolio/user_interface/screens/dashboard_bloc.dart';
+import 'package:lp_portfolio/user_interface/screens/profile.dart';
 import 'package:lp_portfolio/Model/result.dart';
 
 class Dashboard extends StatefulWidget {

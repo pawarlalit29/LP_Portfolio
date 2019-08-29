@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lp_portfolio/user_interface/dashboard.dart';
+import 'package:lp_portfolio/user_interface/screens/dashboard.dart';
 
 void main() => runApp(MyApp());
 
