@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lp_portfolio/Model/profile_data.dart';
 import 'package:lp_portfolio/user_interface/dashboard_bloc.dart';
 import 'package:lp_portfolio/user_interface/profile.dart';
+import 'package:lp_portfolio/Model/result.dart';
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
@@ -28,16 +29,20 @@ class _Dashboard extends State<Dashboard> {
       builder: (context, AsyncSnapshot<ProfileData> snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data.error != null && snapshot.data.error.length > 0) {
-            return _buildErrorWidget(snapshot.data.error);
+            return Scaffold(
+              backgroundColor: Colors.white,
+              body : _buildErrorWidget(snapshot.data.error));
           }
           return new Scaffold(
             backgroundColor: Colors.white,
-            body: mainLayout(context),
+            body: mainLayout(context,snapshot.data.result),
           );
         } else if (snapshot.hasError) {
           return _buildErrorWidget(snapshot.error);
         } else {
-          return _buildLoadingWidget();
+          return Scaffold(
+            backgroundColor: Colors.white,
+            body:_buildLoadingWidget());
         }
       },
     );
@@ -54,7 +59,7 @@ class _Dashboard extends State<Dashboard> {
           padding: EdgeInsets.only(top: 5),
         ),
         CircularProgressIndicator(
-          valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+          valueColor: new AlwaysStoppedAnimation<Color>(Colors.purpleAccent),
         )
       ],
     ));
@@ -81,7 +86,7 @@ class _Dashboard extends State<Dashboard> {
     });
   }
 
-  Widget mainLayout(BuildContext buildContext) {
+  Widget mainLayout(BuildContext buildContext,Result result) {
     var index = 200;
     return Stack(alignment: Alignment.topLeft, children: <Widget>[
       Padding(
@@ -89,8 +94,8 @@ class _Dashboard extends State<Dashboard> {
         child: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/lalit_bg.jpg'),
-                  fit: BoxFit.cover)),
+                  image: NetworkImage(result.personalInfo.profile_image),
+                  fit: BoxFit.contain)),
         ),
       ),
       Padding(
@@ -100,21 +105,21 @@ class _Dashboard extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Text(
-                'Lalit Pawar',
+                result.personalInfo.name,
                 style: TextStyle(
                     fontSize: 45.0,
                     fontFamily: 'Rubik-Medium',
                     color: Colors.purpleAccent),
               ),
               Text(
-                'Mobile Developer',
+                result.personalInfo.designation,
                 style: TextStyle(
                     fontFamily: 'Rubik-Regular',
                     fontSize: 20.0,
                     color: Colors.black),
               ),
               Text(
-                'Mumbai, India',
+                result.personalInfo.location,
                 style: TextStyle(
                     fontFamily: 'Rubik-Regular',
                     fontSize: 15.0,

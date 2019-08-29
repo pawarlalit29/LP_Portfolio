@@ -80,7 +80,7 @@ fonts:
         - asset: assets/fonts/Rubik-Medium.ttf
         - asset: assets/fonts/Rubik-Regular.ttf
 
-assets:
-    - assets/images/
+asset:
+    - assets/images/lalit_bg.jpg
 
   

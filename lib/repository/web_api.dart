@@ -10,12 +10,13 @@ Dio _dio;
 
   WebApiProvider() {
     Options options = Options(receiveTimeout: 5000, connectTimeout: 5000);
+    options.baseUrl = baseUrl;
     _dio = Dio(options);
     _setupLoggingInterceptor();
   }
 
 Future<ProfileData> getProfileData() async {
-  var url = baseUrl + "lp_portfolio";
+  var url =  "lp_portfolio";
     try {
       Response response = await _dio.get(url);
       return ProfileData.fromJson(response.data);
